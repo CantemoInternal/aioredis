@@ -19,7 +19,8 @@ class Lock(_Lock):
             locked and returns True.
             """
             if (not self._locked and (self._waiters is None
-                                      or all(w.cancelled() for w in self._waiters))):
+                                      or all(w.cancelled()
+                                             for w in self._waiters))):
                 self._locked = True
                 return True
 
